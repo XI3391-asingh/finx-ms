@@ -1,0 +1,13 @@
+rootProject.name='finx-ms'
+
+def projectDirs = [
+        'shared',
+        'services',
+]
+
+
+projectDirs.each {
+    file(it).eachDir {dir ->
+        includeBuild dir
+    }
+}
