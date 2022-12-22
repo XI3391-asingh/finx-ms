@@ -66,9 +66,9 @@ jobs:
     - name: Pushing the Helm Deployment
       working-directory: k8s-config/dev
       run: |
-        envsubst < k8s-config/dev/values.yaml > k8s-config/dev/updatedvalues.yaml
-        cat k8s-config/dev/updatedvalues.yaml
-        helm upgrade -i transaction-classification-service -n dev ../../../../_helm_charts/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
+        envsubst < values.yaml > updatedvalues.yaml
+        cat updatedvalues.yaml
+        helm upgrade -i  -n dev ../../../../_helm_chart/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
       # uses: bitovi/github-actions-deploy-eks-helm@v1.1.0
       # with:
       #   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
