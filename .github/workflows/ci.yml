@@ -68,7 +68,7 @@ jobs:
       with:
         files: 'services/customer-service/k8s-config/dev/values.yaml'
       env:
-        tag: $IMAGE_TAG
+        tag: "$IMAGE_TAG"
 
     - name: Pushing the Helm Deployment
       working-directory: services/customer-service/k8s-config/dev
