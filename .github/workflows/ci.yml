@@ -65,7 +65,7 @@ jobs:
     - name: Pushing the Helm Deployment
       run: |
           envsubst < services/customer-service/k8s-config/dev/values.yaml > services/customer-service/k8s-config/dev/updatedvalues.yaml
-          cat services/customer-service/k8s-config/devupdatevalues.yaml
+          cat services/customer-service/k8s-config/dev/updatedvalues.yaml
 
     - name: Deploy Helm
       uses: bitovi/github-actions-deploy-eks-helm@v1.1.0
@@ -75,7 +75,7 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
         cluster-name: labs
         cluster-role-arn: ${{ secrets.AWS_ROLE_ARN }}
-        config-files:  services/customer-service/k8s-config/dev/values.yaml
+        config-files:  services/customer-service/k8s-config/dev/updatedvalues.yaml
         chart-path: _helm_chart/xebia/helm-xebia-service-chart
         namespace: dev-test
         name: customer-service 
