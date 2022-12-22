@@ -81,3 +81,5 @@ jobs:
         name: customer-service 
         version: 1.0.10
         atomic: true
+
+        
