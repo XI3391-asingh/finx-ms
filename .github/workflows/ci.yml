@@ -53,7 +53,7 @@ jobs:
     #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
     #     docker push -a $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     
-    - run: docker build --tag my-image .
+    - run: docker build --tag customer-service .
     - name: Push to ECR
       id: ecr
       uses: rgarcia-phi/gh-ecr-push@v1
