@@ -68,7 +68,7 @@ jobs:
       run: |
         envsubst < values.yaml > updatedvalues.yaml
         cat updatedvalues.yaml
-        helm upgrade -i  -n dev-test ../../../../_helm_chart/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
+        helm upgrade -i customer-service -n dev-test ../../../../_helm_chart/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
       # uses: bitovi/github-actions-deploy-eks-helm@v1.1.0
       # with:
       #   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
