@@ -63,6 +63,13 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
       id: install
     
+    - name: Tag Substitution
+      uses: microsoft/variable-substitution@v1 
+      with:
+        files: 'services/customer-service/k8s-config/dev/values.yaml'
+      env:
+        tag: $IMAGE_TAG
+
     - name: Pushing the Helm Deployment
       working-directory: services/customer-service/k8s-config/dev
       run: |
