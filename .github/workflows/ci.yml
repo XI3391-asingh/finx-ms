@@ -63,15 +63,17 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
       id: install
     
-    - name: Deploy
+    - name: Build, tag, push image to Amazon ECR and kube-config
       working-directory: services/customer-service
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: customer-service
+        IMAGE_TAG: ${{ github.sha }}
       run: |
-           echo Building the Docker image...
-           docker build -t $REPOSITORY_URI:latest .
-           docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-           echo Pushing the Docker images...
-           docker push $REPOSITORY_URI:$IMAGE_TAG
-           aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name labs
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name labs
 
     - name: Pushing the Helm Deployment
       working-directory: services/customer-service/k8s-config/dev
