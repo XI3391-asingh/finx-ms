@@ -11,7 +11,7 @@ deployment:
   initContainers:
   - name: init-liquibase
     image:
-      tag: ${IMAGE_TAG}
+      tag: $IMAGE_TAG
       repository: "474532148129.dkr.ecr.ap-south-1.amazonaws.com/customer-service"
     extraEnvs:
     - name: POSTGRES_USER
@@ -44,7 +44,7 @@ deployment:
     registry: "474532148129.dkr.ecr.ap-south-1.amazonaws.com"
     repository: customer-service
     pullPolicy: IfNotPresent
-    tag: ${IMAGE_TAG}
+    tag: $IMAGE_TAG
   podAnnotations:
     prometheus.io/scrape: 'true'
     prometheus.io/port: '11700'

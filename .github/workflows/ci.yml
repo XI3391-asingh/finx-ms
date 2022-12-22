@@ -78,6 +78,7 @@ jobs:
         config-files:  services/customer-service/k8s-config/dev/updatedvalues.yaml
         chart-path: _helm_chart/xebia/helm-xebia-service-chart
         namespace: dev-test
+        # values: tag=$IMAGE_TAG
         name: customer-service 
         version: 1.0.10
         atomic: true
