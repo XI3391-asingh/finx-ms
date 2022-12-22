@@ -65,7 +65,6 @@ jobs:
     - name: Pushing the Helm Deployment
       run: pwd
           
-
     - name: Deploy Helm
       uses: bitovi/github-actions-deploy-eks-helm@v1.1.0
       with:
