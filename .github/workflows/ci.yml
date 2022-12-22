@@ -83,7 +83,7 @@ jobs:
       run: |     
            envsubst < values.yaml > updatedvalues.yaml
            cat updatedvalues.yaml
-           helm upgrade -i transaction-classification-service -n dev _helm_charts/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
+           helm upgrade -i customer-service -n dev-test ../../../../_helm_charts/xebia/helm-xebia-service-chart/ --values updatedvalues.yaml
     
     # - name: Tag Substitution
     #   uses: microsoft/variable-substitution@v1 
