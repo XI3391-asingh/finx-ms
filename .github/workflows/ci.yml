@@ -63,7 +63,9 @@ jobs:
       id: install
     
     - name: Pushing the Helm Deployment
-      run: pwd
+      run: |
+        envsubst < k8s-config/dev/values.yaml > k8s-config/dev/updatedvalues.yaml
+        cat k8s-config/dev/updatedvalues.yaml
           
     - name: Deploy Helm
       uses: bitovi/github-actions-deploy-eks-helm@v1.1.0
@@ -79,6 +81,3 @@ jobs:
         name: customer-service 
         version: 1.0.10
         atomic: true
-
-# envsubst < services/customer-service/k8s-config/dev/values.yaml > services/customer-service/k8s-config/dev/updatedvalues.yaml
-#           cat services/customer-service/k8s-config/dev/updatedvalues.yaml
