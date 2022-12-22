@@ -64,7 +64,7 @@ jobs:
       id: install
     
     - name: Pushing the Helm Deployment
-      working-directory: k8s-config/dev
+      working-directory: services/customer-service/k8s-config/dev
       run: |
         envsubst < values.yaml > updatedvalues.yaml
         cat updatedvalues.yaml
